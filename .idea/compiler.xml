@@ -34,7 +34,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app" target="1.8" />
-      <module name="clean" target="1.5" />
+      <module name="clean" target="1.8" />
       <module name="client" target="1.8" />
       <module name="dto" target="1.8" />
     </bytecodeTargetLevel>

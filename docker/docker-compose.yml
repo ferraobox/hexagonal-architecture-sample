@@ -118,7 +118,7 @@ services:
 #    volumes:
 #      - ../hazelcast/:/configFolder
 #    environment:
-#      - JAVA_OPTS=-Dhazelcast.config=/configFolder/hazelcast.xml -Dserver.port=8081 -Dhazelcast.mancenter.url=http://management_center:8080/hazelcast-mancenter -Dgroup.name=financefox -Dgroup.password=Wefox1010
+#      - JAVA_OPTS=-Dhazelcast.config=/configFolder/hazelcast.xml -Dserver.port=8081 -Dhazelcast.mancenter.url=http://management_center:8080/hazelcast-mancenter -Dgroup.name=financefox -Dgroup.password=sampleapp1010
 #    depends_on:
 #      - management_center
 #
@@ -139,7 +139,7 @@ services:
 #    volumes:
 #      - postgres_data:/var/lib/postgresql/data
 #    environment:
-#      POSTGRES_DB: wefox
+#      POSTGRES_DB: sampleapp
 #      POSTGRES_USER: user
 #      POSTGRES_PASSWORD: password
 #    ports:
@@ -156,7 +156,7 @@ services:
 #    environment:
 #      DB_VENDOR: POSTGRES
 #      DB_ADDR: postgres
-#      DB_DATABASE: wefox
+#      DB_DATABASE: sampleapp
 #      DB_USER: user
 #      DB_SCHEMA: public
 #      DB_PASSWORD: password
