@@ -9,6 +9,13 @@
     <artifactId>app</artifactId>
 
     <dependencies>
+        <!-- project dependencies -->
+        <dependency>
+            <groupId>com.sampleapp</groupId>
+            <artifactId>dto</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- spring dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -33,24 +40,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+
+        <!-- DB dependencies -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <!-- DEV dependencies -->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -61,11 +71,6 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>0.15</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sampleapp</groupId>
-            <artifactId>dto</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
 
         <!-- test -->
@@ -106,6 +111,7 @@
 
     <build>
         <plugins>
+            <!-- compiler options -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -126,8 +132,7 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-
-
+            <!-- code analysis tool -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -152,10 +157,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            <!-- documentation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -173,6 +175,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- getters and setters generator -->
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
@@ -191,6 +194,26 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- TEST -->
+            <!-- application runner dor INT test -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- spring contract test runner -->
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <testFramework>JUNIT5</testFramework>
+                    <testMode>EXPLICIT</testMode>
+                    <basePackageForTests>com.delivery.contract</basePackageForTests>
+                    <baseClassForTests>com.delivery.contract</baseClassForTests>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 
